@@ -1,0 +1,11 @@
+{
+  "name": "easybuild",
+  "url" : "https://github.com/Randonee/easybuild",
+  "license": "MIT",
+  "tags": ["biuldtool"],
+  "description": "Simple build tool",
+  "version": "0.0.3-alpha",
+  "releasenote": "alpha",
+  "contributors": ["Aaron"],
+  "dependencies": {}
+}
