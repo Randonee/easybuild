@@ -27,16 +27,17 @@ After that you can use "eb" instead of "haxelib run easybuild"
 Commands
 ----------------
 
-ebinstall			installs shortcut "eb" (example: "haxelib run install ebinstall")
-(no commands)		Defaults script to "Build.hx" and runs the target named "build" (example: "eb") 
-[target]			Defaults script to "Build.hx" and runs the target named [target] (example: "eb targetName")
-[script] [target]	Runs the target named [target] in the script [script] (example: "eb scriptName targetName")
+	ebinstall			installs shortcut "eb" (example: "haxelib run install ebinstall")
+	(no commands)		Defaults script to "Build.hx" and runs the target named "build" (example: "eb") 
+	[target]			Defaults script to "Build.hx" and runs the target named [target] (example: "eb targetName")
+	[script] [target]	Runs the target named [target] in the script [script] (example: "eb scriptName targetName")
 
 
 Build script format
 ----------------
 
 Build scripts are haxe just classes. Each method in the class is a target. You can also specify compiler arguments using the syntax shown in the example bellow.
+For a more thorow example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/Build.hx
 
 	/*COMPILER
 	-cp src
