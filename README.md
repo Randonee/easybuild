@@ -37,7 +37,7 @@ Build script format
 ----------------
 
 Build scripts are haxe just classes. Each method in the class is a target. You can also specify compiler arguments using the syntax shown in the example bellow.
-For a more thorow example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/Build.hx
+For a more thorough example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/Build.hx
 
 	/*COMPILER
 	-cp src
