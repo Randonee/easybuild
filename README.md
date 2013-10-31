@@ -21,7 +21,7 @@ You can install the shortcut "eb" by running
 	
 	haxelib run easybuild ebinstall
 	
-After that you can use "eb" instead of "haxe run easybuild"
+After that you can use "eb" instead of "haxelib run easybuild"
 
 
 Commands
