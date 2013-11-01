@@ -7,7 +7,7 @@ import easybuild.util.*;
 import sys.FileSystem;
 import sys.io.File;
 
-class Build
+class BuildScript
 {
 	static inline private var VERSION:String = "0.0.3-alpha";
 	static inline private var VERSION_DIR:String = "0,0,3-alpha";
