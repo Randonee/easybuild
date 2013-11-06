@@ -46,13 +46,25 @@ class Zip
 	
 	public function addDirectory(path:String, ?entryPath:String=""):Void
 	{
+		if(!FileSystem.exists(path))
+			throw "Directory does not exist: " + path;
+			
+		path = FileSystem.fullPath(path);
+		
 		if(path.charAt(path.length-1) != "/")
 			path += "/";
-	
+			
 		var parts = path.split("/");
 		entryPath = entryPath + parts[parts.length-2] + "/";
 		
-		var files = FileSystem.readDirectory(path);
+		var files:Array<String> = [];
+		try{
+			files = FileSystem.readDirectory(path);
+		}
+		catch(error:Dynamic){
+			throw "Error: " + error +",  Couldn't read directory: " + path;
+		}
+		
 		for(file in files)
 		{
 			if(FileSystem.isDirectory(path + file))
