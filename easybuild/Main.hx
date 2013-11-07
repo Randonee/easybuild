@@ -49,7 +49,18 @@ class Main
 				buildDir = args[2];
 			}
 			
+			if(script.indexOf(".hx") >= 0)
+				script = script.substring(0, script.indexOf(".hx"));
+				
+			if(script.charAt(0) == "/")
+			{
+				buildDir = script.substring(0, script.lastIndexOf("/"));
+				script = script.split("/").pop();
+			}
 			
+			if(buildDir.charAt(buildDir.length-1) != "/")
+				buildDir += "/";
+				
 			if(!FileSystem.exists(buildDir + script + ".hx"))
 				throw("Build Script not found: " + buildDir + script + ".hx");
 			
@@ -107,10 +118,10 @@ class Main
 		}
 	}
 	
-	private static function cleanUp(buildDir:String):Void
+	private static function cleanUp(dir:String):Void
 	{
-		if(buildDir != "" && FileSystem.exists(buildDir))
-			FileUtil.deleteDirectoryRecursive(buildDir);
+		if(dir != "" && FileSystem.exists(dir))
+			FileUtil.deleteDirectoryRecursive(dir);
 	}
 	
 	private static function getContent(contents:String, start:String, end:String):String

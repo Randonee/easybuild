@@ -26,6 +26,7 @@ class BuildMain
 			{
 				try{
 					instance.::target::();
+					Lib.println("Complete");
 					return;
 				}
 				catch(error:Dynamic)
