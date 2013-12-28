@@ -91,6 +91,8 @@ class Main
 					
 					compilerSettings += "\n-cp " + path;
 				}
+				else
+					compilerSettings += "\n " + setting;
 			}
 			
 			compilerSettings += "\n-lib easybuild";

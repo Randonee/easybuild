@@ -26,7 +26,6 @@ class BuildMain
 			{
 				try{
 					instance.::target::();
-					Lib.println("Complete");
 					return;
 				}
 				catch(error:Dynamic)
@@ -36,7 +35,6 @@ class BuildMain
 				}
 			}
 		}
-	
 		Lib.println('Target "' + target + '" not found.');			
 	}
 }
