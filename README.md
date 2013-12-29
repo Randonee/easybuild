@@ -58,3 +58,14 @@ For a more thorough example take a look at the build script for this lib: https:
 			trace('this is a target that can be called with the command "anotherTarget"');
 		}
 	}
+	
+Sublime Text 3 Build System
+----------------
+
+Sublime Text 3 users can add this as their build system to build from within Sublime Text
+
+	{
+		"shell_cmd": "eb",
+		"file_regex": "^([^:]*):([0-9]+):.*$",
+		"working_dir": "${project_path:${folder}}"
+	}
