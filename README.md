@@ -14,14 +14,45 @@ run command:
 	haxelib git easybuild https://github.com/Randonee/easybuild
 
 
-Usage
-----------------
-
-You can install the shortcut "eb" by running
+Install the shortcut "eb" by running
 	
 	haxelib run easybuild ebinstall
 	
 After that you can use "eb" instead of "haxelib run easybuild"
+
+
+Usage
+----------------
+
+Build scripts are haxe classes that look something like this:
+
+	class Build
+	{
+		public function new(){};
+
+		public function build():Void
+		{
+			trace("Do Some Build Stuff");
+		}
+
+		public function build2():Void
+		{
+			trace("this is build 2");
+		}
+	}
+
+If you were to save the above class to a file called Build.hx you could then go to the directory where you saved it and run the command:
+
+	eb
+
+This will default to running the build method of the Build class. To run build2 you would run this command
+
+	eb build2
+
+Now lets say you want to have more than one class. EasyBuild's default is to look for a Build class. If the class were named SuperBuild, you would run it like this:
+
+	eb SuperBuild build
+
 
 
 Commands
@@ -36,7 +67,7 @@ Commands
 Build script format
 ----------------
 
-Build scripts are haxe just classes. Each method in the class is a target. You can also specify compiler arguments using the syntax shown in the example bellow.
+Build scripts are just plane haxe classes. Each method in the class is a target. You can also specify compiler arguments adding /\*COMPILER [args]  COMPILER\*/ as shown in the example bellow.
 For a more thorough example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/BuildScript.hx
 
 	/*COMPILER
