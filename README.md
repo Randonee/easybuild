@@ -1,10 +1,9 @@
 EasyBuild
 =====
 
-EasyBuild lets you use haxe for build scripts. Think of it as a replacement for ant.
-The great thing about EasyBuild is that build scripts are haxe classes which are compiled for neko. 
+EasyBuild lets you use haxe for your build scritps.
 
-EasyBuild has only been tested on os x
+**EasyBuild has only been tested on os x**
 
 Installation
 ----------------
