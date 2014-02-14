@@ -28,7 +28,7 @@ Build scripts are haxe classes that look something like this:
 
 	class Build
 	{
-		public function new(){};
+		public function new(){}
 
 		public function build():Void
 		{
@@ -37,7 +37,7 @@ Build scripts are haxe classes that look something like this:
 
 		public function build2():Void
 		{
-			trace("this is build 2");
+			trace("This is build2");
 		}
 	}
 
