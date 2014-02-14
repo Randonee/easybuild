@@ -1,7 +1,7 @@
 EasyBuild
 =====
 
-EasyBuild lets you use haxe for your build scritps.
+EasyBuild lets you use haxe for your build scripts.
 
 **EasyBuild has only been tested on os x**
 
@@ -13,7 +13,7 @@ run command:
 	haxelib git easybuild https://github.com/Randonee/easybuild
 
 
-Install the shortcut "eb" by running
+Install the shortcut "eb" by running.
 	
 	haxelib run easybuild ebinstall
 	
@@ -52,6 +52,21 @@ Now lets say you want to have more than one class. EasyBuild's default is to loo
 
 	eb SuperBuild build
 
+Thats all great but what about compiling an actual haxe project? Build scripts are compiled to neko applications and have access to everything neko does. So to build a project just call Sys.command("haxe", ["build.hxml"]) in the build target. Something like this:
+
+	class Build
+	{
+		public function new(){}
+
+		public function build():Void
+		{
+			Sys.command("haxe", ["build.hxml"]);
+		}
+	}
+
+This assumes that there is an existing file called build.hxml. There is also a utility class in included with EasyBuild that helps with running commands: [ProcessUtil](https://github.com/Randonee/easybuild/blob/master/easybuild/util/ProcessUtil.hx)
+
+For a more thorough example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/BuildScript.hx
 
 
 Commands
@@ -67,7 +82,7 @@ Build script format
 ----------------
 
 Build scripts are just plane haxe classes. Each method in the class is a target. You can also specify compiler arguments by adding /\*COMPILER [args]  COMPILER\*/ as shown in the example bellow.
-For a more thorough example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/BuildScript.hx
+
 
 	/*COMPILER
 	-cp src
@@ -92,7 +107,7 @@ For a more thorough example take a look at the build script for this lib: https:
 Sublime Text 3 Build System
 ----------------
 
-Sublime Text 3 users can add this as their build system to build from within Sublime Text. This will give output and clickable errors in the sublime text consol window.
+Sublime Text 3 users can add this as their build system to build from within Sublime Text. This will give output and clickable errors in the sublime text console window.
 
 	{
 		"shell_cmd": "eb",
