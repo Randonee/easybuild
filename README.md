@@ -45,11 +45,11 @@ If you were to save the above class to a file called Build.hx you could then go 
 
 	eb
 
-This will default to running the build method of the Build class. To run build2 you would run this command
+This will default to running the "build" method (target) of the Build class. Each method in the class is a target. To run the build2 target you would run this command
 
 	eb build2
 
-Now lets say you want to have more than one class. EasyBuild's default is to look for a Build class. If the class were named SuperBuild, you would run it like this:
+Now lets say you want to have more than one class. EasyBuild's default is to look for a "Build.hx" file with a Build class inside. If the class were named SuperBuild and saved as "SuperBuild.hx", you would run it like this:
 
 	eb SuperBuild build
 
@@ -67,7 +67,7 @@ Commands
 Build script format
 ----------------
 
-Build scripts are just plane haxe classes. Each method in the class is a target. You can also specify compiler arguments adding /\*COMPILER [args]  COMPILER\*/ as shown in the example bellow.
+Build scripts are just plane haxe classes. Each method in the class is a target. You can also specify compiler arguments by adding /\*COMPILER [args]  COMPILER\*/ as shown in the example bellow.
 For a more thorough example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/BuildScript.hx
 
 	/*COMPILER
@@ -93,7 +93,7 @@ For a more thorough example take a look at the build script for this lib: https:
 Sublime Text 3 Build System
 ----------------
 
-Sublime Text 3 users can add this as their build system to build from within Sublime Text
+Sublime Text 3 users can add this as their build system to build from within Sublime Text. This will give output and clickable errors in the sublime text consol window.
 
 	{
 		"shell_cmd": "eb",
