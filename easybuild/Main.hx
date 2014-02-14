@@ -69,13 +69,17 @@ class Main
 			
 			var mainLocatoin = FileUtil.getHaxelib("easybuild") + "template/BuildMain.hx";
 			var mainContents = File.getContent(mainLocatoin);
+
+
+			var r:EReg = ~/package (.*);/;
+			var scriptClassImport = r.match(scriptContents) ? "import " + r.matched(1) + ";" : "";
 			
-			var scriptClassImport = getContent(scriptContents, "package ", ";");
 			
-			if(scriptClassImport != "")
-				scriptClassImport = "import " +scriptClassImport;
+			//Get compiler settings
+			r = ~/\/\*COMPILER(.*)COMPILER\*\//s;
+			var compilerSettings = r.match(scriptContents) ? r.matched(1) : "";
 			
-			var compilerSettings = getContent(scriptContents, "/*COMPILER", "COMPILER*/");
+
 			var settings = compilerSettings.split("\n");
 			compilerSettings = "";
 			for(setting in settings)
