@@ -64,7 +64,7 @@ Thats all great but what about compiling an actual haxe project? Build scripts a
 		}
 	}
 
-This assumes that there is an existing file called build.hxml. There is also a utility class in included with EasyBuild that helps with running commands: [ProcessUtil](https://github.com/Randonee/easybuild/blob/master/easybuild/util/ProcessUtil.hx)
+This assumes that there is an existing file called build.hxml. There is also a utility class included with EasyBuild that helps with running commands: [ProcessUtil](https://github.com/Randonee/easybuild/blob/master/easybuild/util/ProcessUtil.hx)
 
 For a more thorough example take a look at the build script for this lib: https://github.com/Randonee/easybuild/blob/master/BuildScript.hx
 
@@ -114,3 +114,9 @@ Sublime Text 3 users can add this as their build system to build from within Sub
 		"file_regex": "^([^:]*):([0-9]+):.*$",
 		"working_dir": "${project_path:${folder}}"
 	}
+
+
+
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Randonee/easybuild/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
