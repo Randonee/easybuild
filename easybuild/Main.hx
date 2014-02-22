@@ -17,7 +17,16 @@ class Main
 			var buildDir:String = ""; //always last argument
 			var args = Sys.args();
 			
-			if(args.length == 1)
+			if(args.length == 2 && (args[0] == "?" || args[0] == "help") )
+			{
+				Lib.println("Commands");
+				Lib.println('ebinstall           installs shortcut "eb" (example: "haxelib run install ebinstall")');
+				Lib.println('(no commands)       Defaults script to "Build.hx" and runs the target named "build" (example: "eb") ');
+				Lib.println('[target]            Defaults script to "Build.hx" and runs the target named [target] (example: "eb targetName")');
+				Lib.println('[script] [target]   Runs the target named [target] in the script [script] (example: "eb scriptName targetName")');
+				return;
+			}
+			else if(args.length == 1)
 			{
 				script = "build";
 				target = "build";
