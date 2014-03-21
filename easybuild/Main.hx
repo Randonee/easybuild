@@ -130,6 +130,7 @@ class Main
 		{
 			Lib.println("Error: " + error);
 			cleanUp(easyBuildTemp);
+			Sys.exit(1);
 		}
 	}
 	
