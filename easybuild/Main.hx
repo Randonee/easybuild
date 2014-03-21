@@ -128,7 +128,6 @@ class Main
 		}
 		catch(error:Dynamic)
 		{
-			Lib.println("Error: " + error);
 			cleanUp(easyBuildTemp);
 			Sys.exit(1);
 		}

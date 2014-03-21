@@ -31,6 +31,7 @@ class BuildMain
 				catch(error:Dynamic)
 				{
 					Lib.println("ERROR: " + error);
+					Sys.exit(1);
 					return;
 				}
 			}
