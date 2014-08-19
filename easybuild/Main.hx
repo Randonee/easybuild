@@ -47,7 +47,7 @@ class Main
 				target = args[0];
 				buildDir = args[1];
 			}
-			else if(args.length != 3)
+			else if(args.length == 0)
 			{
 				throw("Incorrect arguments");
 			}
@@ -55,8 +55,10 @@ class Main
 			{
 				script = args[0];
 				target = args[1];
-				buildDir = args[2];
+
+				buildDir = args[args.length-1];
 			}
+			
 			
 			if(script.indexOf(".hx") >= 0)
 				script = script.substring(0, script.indexOf(".hx"));
@@ -66,13 +68,13 @@ class Main
 				buildDir = script.substring(0, script.lastIndexOf("/"));
 				script = script.split("/").pop();
 			}
-			
+
 			if(buildDir.charAt(buildDir.length-1) != "/")
 				buildDir += "/";
 				
 			if(!FileSystem.exists(buildDir + script + ".hx"))
 				throw("Build Script not found: " + buildDir + script + ".hx");
-			
+
 			var scriptClass = script.charAt(0).toUpperCase() + script.substr(1);
 			var scriptContents = File.getContent(buildDir + script + ".hx");
 			
@@ -82,7 +84,7 @@ class Main
 
 			var r:EReg = ~/package (.*);/;
 			var scriptClassImport = r.match(scriptContents) ? "import " + r.matched(1) + ";" : "";
-			
+
 			
 			//Get compiler settings
 			r = ~/\/\*COMPILER(.*)COMPILER\*\//s;
@@ -122,7 +124,20 @@ class Main
 			FileUtil.copyFile(buildDir + script + ".hx", easyBuildTemp + scriptClass + ".hx");
 			
 			ProcessUtil.runCommand(easyBuildTemp, "haxe", [easyBuildTemp + "build.hxml"]);
-			ProcessUtil.runCommand(buildDir, "neko", [easyBuildTemp + "Build.n", target]);
+
+			var callArgs = [easyBuildTemp + "Build.n", target];
+
+			if(args.length > 3)
+			{
+				var index = 2;
+				while(index < args.length-1)
+				{
+					callArgs.push(args[index]);
+					++index;
+				}
+			}
+
+			ProcessUtil.runCommand(buildDir, "neko", callArgs);
 			
 			cleanUp(easyBuildTemp);
 		}
