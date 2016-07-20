@@ -114,9 +114,3 @@ Sublime Text 3 users can add this as their build system to build from within Sub
 		"file_regex": "^([^:]*):([0-9]+):.*$",
 		"working_dir": "${project_path:${folder}}"
 	}
-
-
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Randonee/easybuild/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
