@@ -34,11 +34,21 @@ class Main
 			}
 			else if(args[0] == "ebinstall")
 			{
-				if(FileSystem.exists("/usr/bin/eb"))
-					ProcessUtil.runCommand("/usr/bin/", "sudo", ["rm", "/usr/bin/eb"]);
+			  /*
+			   Crude check to see if we're working with OSX.  From El Cap forward the "rootless" mode prevents writing to the /usr/bin directory,
+			   so the symlink needs to be created at /usr/local/bin.
+			   It is not known if this is backward compatible to version of OSX < El Cap
+			   See: https://github.com/Randonee/easybuild/issues/1
+			   */
+				var targetDir:String = (Sys.systemName() == "Mac") ? "/usr/local/bin/" : "/usr/bin";
+				var targetPath:String = targetDir + "eb";
 				
-				ProcessUtil.runCommand("/usr/bin/", "sudo", ["ln", "-s", FileUtil.getHaxelib("easybuild") + "script/eb.sh", "eb"]);
-				ProcessUtil.runCommand("/usr/bin/", "sudo", ["chmod", "755", FileUtil.getHaxelib("easybuild") + "script/eb.sh"]);
+				if(FileSystem.exists(targetPath)) {
+					ProcessUtil.runCommand(targetDir, "sudo", ["rm", targetPath]);
+				}
+				
+				ProcessUtil.runCommand(targetDir, "sudo", ["ln", "-s", FileUtil.getHaxelib("easybuild") + "script/eb.sh", "eb"]);
+				ProcessUtil.runCommand(targetDir, "sudo", ["chmod", "755", FileUtil.getHaxelib("easybuild") + "script/eb.sh"]);
 				return;
 			}
 			else if(args.length == 2)
